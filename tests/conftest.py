@@ -51,3 +51,15 @@ def cards():
             owner='MALYUTA SCURATOV',
         ),
     ]
+
+
+@pytest.fixture
+def good_words():
+    good_words = {'love', 'caring'}
+    return good_words
+
+
+@pytest.fixture
+def bad_words():
+    bad_words = {'dislike', 'slow', 'bugs', 'frustration'}
+    return bad_words
