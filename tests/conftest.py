@@ -63,3 +63,15 @@ def good_words():
 def bad_words():
     bad_words = {'dislike', 'slow', 'bugs', 'frustration'}
     return bad_words
+
+
+@pytest.fixture
+def replace_from():
+    replace_from = 'jungle'
+    return replace_from
+
+
+@pytest.fixture
+def replace_to():
+    replace_to = 'forest'
+    return replace_to
