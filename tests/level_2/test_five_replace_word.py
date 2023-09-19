@@ -8,8 +8,8 @@ from functions.level_2.five_replace_word import replace_word
     [
         ('welcome to the jungle', 'welcome to the forest'),
         (
-                'welcome to the jungle we got your disease in the jungle',
-                'welcome to the forest we got your disease in the forest'
+            'welcome to the jungle we got your disease in the jungle',
+            'welcome to the forest we got your disease in the forest'
         ),
     ]
 )

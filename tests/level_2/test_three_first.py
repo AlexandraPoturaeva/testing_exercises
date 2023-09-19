@@ -4,9 +4,7 @@ from functions.level_2.three_first import first
 
 
 def test__first__with_items():
-    items = [1, 2, 3]
-    actual_result = first(items=items)
-    assert actual_result == 1
+    assert first(items=[1, 2, 3]) == 1
 
 
 def test__first__without_items_and_default():

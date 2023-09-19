@@ -55,14 +55,12 @@ def cards():
 
 @pytest.fixture
 def good_words():
-    good_words = {'love', 'caring'}
-    return good_words
+    return {'love', 'caring'}
 
 
 @pytest.fixture
 def bad_words():
-    bad_words = {'dislike', 'slow', 'bugs', 'frustration'}
-    return bad_words
+    return {'dislike', 'slow', 'bugs', 'frustration'}
 
 
 @pytest.fixture

@@ -8,21 +8,29 @@ import pytest
     [
         (3, -4, 2),
         (0, 0, -6),
+        (2, 0, 4),
     ]
 )
-def test_square_equation__no_roots(square_coefficient, linear_coefficient, const_coefficient):
+def test__solve_square_equation__no_roots(square_coefficient, linear_coefficient, const_coefficient):
     assert solve_square_equation(square_coefficient, linear_coefficient, const_coefficient) == (None, None)
 
 
-def test_square_equation__without_square_coefficient():
-    assert solve_square_equation(0, -2, 8) == (4, None)
+@pytest.mark.parametrize(
+    'square_coefficient,linear_coefficient,const_coefficient,expected',
+    [
+        (0, -2, 8, (4, None)),
+        (2, 0, -8, (-2, 2)),
+    ]
+)
+def test__solve_square_equation__without_square_coefficient(square_coefficient, linear_coefficient, const_coefficient, expected):
+    assert solve_square_equation(square_coefficient, linear_coefficient, const_coefficient) == expected
 
 
-def test_square_equation__two_roots():
+def test__solve_square_equation__two_roots():
     assert solve_square_equation(1, -4, -5) == (-1, 5)
 
 
-def test_square_equation__with_float_nums():
+def test__solve_square_equation__with_float_nums():
     square_coefficient = -8.6
     linear_coefficient = 8.4
     const_coefficient = 2.7
