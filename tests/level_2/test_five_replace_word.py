@@ -4,31 +4,32 @@ from functions.level_2.five_replace_word import replace_word
 
 
 @pytest.mark.parametrize(
-    'text,expected,id',
+    'text,expected',
     [
         (
             'welcome to the jungle',
-            'welcome to the forest',
-            'replace_one_word',
+            'welcome to the forest'
         ),
         (
             'welcome to the jungle we got your disease in the jungle',
-            'welcome to the forest we got your disease in the forest',
-            'replace_two_words',
+            'welcome to the forest we got your disease in the forest'
         ),
         (
             'welcome to the jungle. we got your disease in the jungle',
-            'welcome to the jungle. we got your disease in the forest',
-            'doesnt_work_with_punctuation',
+            'welcome to the jungle. we got your disease in the forest'
         ),
         (
             'Welcome to the JunGle we got your disease in the jungle',
-            'Welcome to the forest we got your disease in the forest',
-            'independent_from_letter_case',
+            'Welcome to the forest we got your disease in the forest'
         ),
+    ], ids=[
+        'replace_one_word',
+        'replace_two_words',
+        'doesnt_work_with_punctuation',
+        'independent_from_letter_case',
     ]
 )
-def test__replace_word(text, replace_from, replace_to, expected, id):
+def test__replace_word(text, replace_from, replace_to, expected):
     assert replace_word(text=text, replace_from=replace_from, replace_to=replace_to) == expected
 
 
