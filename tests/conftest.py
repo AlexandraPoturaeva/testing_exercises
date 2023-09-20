@@ -51,3 +51,25 @@ def cards():
             owner='MALYUTA SCURATOV',
         ),
     ]
+
+
+@pytest.fixture
+def good_words():
+    return {'love', 'caring'}
+
+
+@pytest.fixture
+def bad_words():
+    return {'dislike', 'slow', 'bugs', 'frustration'}
+
+
+@pytest.fixture
+def replace_from():
+    replace_from = 'jungle'
+    return replace_from
+
+
+@pytest.fixture
+def replace_to():
+    replace_to = 'forest'
+    return replace_to
