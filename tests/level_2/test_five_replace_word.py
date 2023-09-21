@@ -22,12 +22,13 @@ from functions.level_2.five_replace_word import replace_word
             'Welcome to the JunGle we got your disease in the jungle',
             'Welcome to the forest we got your disease in the forest'
         ),
-    ], ids=[
+    ],
+    ids=[
         'replace_one_word',
         'replace_two_words',
         'doesnt_work_with_punctuation',
         'independent_from_letter_case',
-    ]
+    ],
 )
 def test__replace_word(text, replace_from, replace_to, expected):
     assert replace_word(text=text, replace_from=replace_from, replace_to=replace_to) == expected
