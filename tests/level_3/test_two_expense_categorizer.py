@@ -12,6 +12,6 @@ import pytest
         ('some place', None),
     ]
 )
-def test__expense_category(create_expense, spent_in, expected):
+def test__guess_expense_category(create_expense, spent_in, expected):
     expense = create_expense(spent_in=spent_in)
     assert guess_expense_category(expense) == expected
