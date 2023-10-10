@@ -4,8 +4,8 @@ import string
 from decimal import Decimal
 from datetime import date, datetime, timedelta
 import random
-from functions.level_1.four_bank_parser import BankCard, Expense as Expense_lvl_1
-from functions.level_3.models import Expense as Expense_lvl_3, ExpenseCategory, Currency
+from functions.level_1.four_bank_parser import BankCard, Expense as ExpenseLevel1
+from functions.level_3.models import Expense as ExpenseLevel3, Currency
 
 
 @pytest.fixture
@@ -28,7 +28,7 @@ def tomorrow_time(today_time):
 
 @pytest.fixture
 def expense():
-    return Expense_lvl_1(
+    return ExpenseLevel1(
         amount=Decimal('56'),
         card=BankCard(
             last_digits='8664',
@@ -100,7 +100,7 @@ def create_expense():
             spent_at=datetime.fromisoformat('2023-10-09'),
             category=None,
     ):
-        expense = Expense_lvl_3(
+        expense = ExpenseLevel3(
             amount=amount,
             currency=currency,
             card=card,
