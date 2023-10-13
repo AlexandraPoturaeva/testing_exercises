@@ -6,6 +6,7 @@ import pytest
     'name,expected',
     [
         ('{"name"}', 'name'),
+        ('("name")', '("name")'),
         ('name', 'name'),
         ('{', ''),
         ('{"na', ''),
