@@ -6,6 +6,7 @@ from datetime import date, datetime, timedelta
 import random
 from functions.level_1.four_bank_parser import BankCard, Expense as ExpenseLevel1
 from functions.level_3.models import Expense as ExpenseLevel3, Currency
+from functions.level_4.two_students import Student
 
 
 @pytest.fixture
@@ -87,6 +88,7 @@ def create_random_bankcard():
             last_digits=str(random.randint(1000, 9999)),
             owner=''.join(random.choice(letters) for _ in range(5)),
         )
+
     return create_random_bankcard_function
 
 
@@ -111,3 +113,31 @@ def create_expense():
         return expense
 
     return create_expense_function
+
+
+@pytest.fixture()
+def create_student():
+    def create_student_function(
+            first_name='Ivan',
+            last_name='Ivanov',
+            telegram_account=None,
+    ):
+        student = Student(
+            first_name=first_name,
+            last_name=last_name,
+            telegram_account=telegram_account
+        )
+        return student
+
+    return create_student_function
+
+
+@pytest.fixture()
+def students(create_student):
+    students = [
+        create_student(telegram_account=tg_account) for tg_account in (
+            '@Ivan_Ivanov',
+            '@ivan_ivanov',
+            '@ivan-ivanov'
+        )]
+    return students
