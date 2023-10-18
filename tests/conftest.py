@@ -1,11 +1,12 @@
+import configparser
 import datetime
 import os
-
 import pytest
+import random
 import string
 from decimal import Decimal
 from datetime import date, datetime, timedelta
-import random
+
 from functions.level_1.four_bank_parser import BankCard, Expense as ExpenseLevel1
 from functions.level_3.models import Expense as ExpenseLevel3, Currency
 from functions.level_4.two_students import Student
@@ -147,7 +148,6 @@ def students(create_student):
 
 @pytest.fixture()
 def filepath():
-
     def filepath_function(lines: list[str] = None):
         path_to_file = 'test_file.txt'
 
@@ -170,3 +170,21 @@ def dir_path():
     os.mkdir(dir_path)
     yield dir_path
     os.rmdir(dir_path)
+
+
+@pytest.fixture()
+def config_file_path():
+    config_file_path = "example.ini"
+    config = configparser.ConfigParser()
+    config["tool:app-config"] = {}
+    config["tool:app-config"]["extra_fields"] = \
+        "TRAP_HTTP_EXCEPTIONS: False\n" \
+        "DEBUG: True\n" \
+        "SESSION_REFRESH_EACH_REQUEST: False"
+
+    with open(config_file_path, 'w') as configfile:
+        config.write(configfile)
+
+    yield config_file_path
+
+    os.remove(config_file_path)
