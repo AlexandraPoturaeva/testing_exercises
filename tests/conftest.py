@@ -1,4 +1,6 @@
 import datetime
+import os
+
 import pytest
 import string
 from decimal import Decimal
@@ -141,3 +143,30 @@ def students(create_student):
             '@ivan-ivanov'
         )]
     return students
+
+
+@pytest.fixture()
+def filepath():
+
+    def filepath_function(lines: list[str] = None):
+        path_to_file = 'test_file.txt'
+
+        if not lines:
+            open(path_to_file, 'a').close()
+        else:
+            with open(path_to_file, 'w') as file_handler:
+                file_handler.writelines(lines)
+
+        return path_to_file
+
+    yield filepath_function
+
+    os.remove(filepath_function())
+
+
+@pytest.fixture()
+def dir_path():
+    dir_path = os.path.join('.', 'test')
+    os.mkdir(dir_path)
+    yield dir_path
+    os.rmdir(dir_path)
